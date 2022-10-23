@@ -7,8 +7,10 @@ npm: 8.1.2
 
 | dependencies           | version  |
 | ---------------------- | -------- |
-| react                  | ^16.14.0 |
-| react-dom              | ^16.14.0 |
+| react                  | ^18.2.0  |
+| react-dom              | ^18.2.0  |
+| react-scrips           | ^5.0.1   |
+| typescript             | ^4.8.4   |
 
 <br><br>
 
@@ -36,3 +38,4 @@ npm: 8.1.2
     ※ viewport と charset と title だけ残す  
     ※ body の root 以外は削除  
     ※ favicon、icon、manifest ファイルを削除
+  - package.json にある "@" がついているものを devDependency に移動
