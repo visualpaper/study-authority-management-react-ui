@@ -9,6 +9,7 @@ npm: 8.1.2
 | ---------------------- | -------- |
 | react                  | ^18.2.0  |
 | react-dom              | ^18.2.0  |
+| react-router-dom       | ^6.4.2   |
 | react-scrips           | ^5.0.1   |
 | typescript             | ^4.8.4   |
 
@@ -39,7 +40,6 @@ npm: 8.1.2
     ※ body の root 以外は削除  
     ※ favicon、icon、manifest ファイルを削除
   - package.json にある "@" がついているものを devDependency に移動
-
 
 <br>
 
@@ -100,3 +100,16 @@ npm: 8.1.2
 - npm i -D @typescript-eslint/eslint-plugin  
   ※ フォーマッタと lint を担当する。  
   ※ cra にデフォルトで eslint は入っているので、prettier との連携用 plugin のみをインストールする。
+
+<br>
+
+#### router
+
+- npm i react-router-dom
+- npm i -D @types/react-router-dom
+
+#### design
+
+- npm install @mui/material @emotion/react @emotion/styled  
+- npm install @mui/icons-material  
+  ※ [Material UI](https://mui.com/material-ui/getting-started/overview/) を利用している。
