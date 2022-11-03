@@ -1,0 +1,31 @@
+env:
+  # 実行環境
+  # (参照) https://eslint.org/docs/latest/user-guide/configuring/language-options#specifying-environments
+  browser: true
+  es2022: true
+# TypeScript 用のパーサーを利用
+parser: '@typescript-eslint/parser'
+parserOptions:
+  ecmaVersion: 2022
+  # プロジェクト内の型認識に使用
+  project: ./tsconfig.json
+plugins:
+  - react
+  - jest
+  - '@typescript-eslint'
+# 以下を継承した上で、本 eslint の設定を利用している。
+# (参照) https://zenn.dev/kimromi/articles/b7cf98005f3193
+extends:
+  - eslint:recommended
+  - plugin:@typescript-eslint/eslint-recommended
+  # prettier と競合しないように設定ファイルの extends の最後に prettier 記載することで、prettier を優先している。
+  - prettier
+rules:
+  "@typescript-eslint/no-explicit-any": off
+
+  # 本当は消したいが、開発中あると結構キツイので off にしている。
+  "@typescript-eslint/no-empty-function": off
+  "@typescript-eslint/explicit-module-boundary-types": off
+  "@typescript-eslint/no-unused-vars": off
+  "@typescript-eslint/ban-types": off
+  "@typescript-eslint/no-non-null-assertion": off

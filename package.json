@@ -10,6 +10,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "format": "prettier --write ./src/**/*.{ts,tsx}",
+    "lint": "eslint --fix ./src/**/*.{ts,tsx}",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -39,6 +41,10 @@
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.68",
     "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6"
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1"
   }
 }

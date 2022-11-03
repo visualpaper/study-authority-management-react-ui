@@ -39,3 +39,64 @@ npm: 8.1.2
     ※ body の root 以外は削除  
     ※ favicon、icon、manifest ファイルを削除
   - package.json にある "@" がついているものを devDependency に移動
+
+
+<br>
+
+#### vscode settings
+
+```
+{
+  # ファイルを開くたびに前のタブを消さない
+  "workbench.editor.enablePreview": false,
+
+  # ダブルクリックでファイルを開く
+  "workbench.list.openMode": "doubleClick",
+
+  # タブサイズは 2 とする
+  "editor.tabSize": 2,
+
+  # 右に表示されるミニマップを表示しない
+  "editor.minimap.enabled": false,
+
+  # フォルダをまとめて階層表示しない
+  "explorer.compactFolders": false,
+
+  # 改行コードは LF で保存する
+  "files.eol": "\n"
+}
+```
+
+<br>
+
+#### install formatter
+
+- npm i -D prettier  
+  ※ フォーマッタを担当するが、lint は担当しない。
+
+```
+{
+  # 行数制限は 80
+  "printWidth": 80,
+
+  # タブ数は 2
+  "tabWidth": 2,
+
+  # 文字列はシングルクォートにする
+  "singleQuote": true,
+
+  # ステートメントの最後にセミコロンを追加しない
+  # ※ false の場合、セミコロンが無いとエラーになる箇所にだけセミコロンを追加する
+  "semi": false
+}
+```
+
+<br>
+
+#### install lint
+
+- npm i -D eslint-config-prettier
+- npm i -D @typescript-eslint/parser
+- npm i -D @typescript-eslint/eslint-plugin  
+  ※ フォーマッタと lint を担当する。  
+  ※ cra にデフォルトで eslint は入っているので、prettier との連携用 plugin のみをインストールする。
