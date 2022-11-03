@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography } from '@mui/material'
 
 const IndexPage = () => {
   return (
@@ -6,7 +6,7 @@ const IndexPage = () => {
       <Typography variant="h2">サンプルアプリ</Typography>
       <Typography>ここはトップページです</Typography>
     </>
-  );
-};
+  )
+}
 
-export default IndexPage;
+export default IndexPage

@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography } from '@mui/material'
 
 const ItemsPage = () => {
   return (
@@ -6,7 +6,7 @@ const ItemsPage = () => {
       <Typography variant="h2">商品一覧ページ</Typography>
       <Typography>ここは商品一覧ページです</Typography>
     </>
-  );
-};
+  )
+}
 
-export default ItemsPage;
+export default ItemsPage
