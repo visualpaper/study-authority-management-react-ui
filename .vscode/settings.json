@@ -1,0 +1,8 @@
+{
+  "workbench.editor.enablePreview": false,
+  "workbench.list.openMode": "doubleClick",
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "explorer.compactFolders": false,
+  "files.eol": "\n"
+}
