@@ -8,6 +8,7 @@ npm: 8.1.2
 | dependencies           | version  |
 | ---------------------- | -------- |
 | react                  | ^18.2.0  |
+| react-bootstrap        | ^2.5.0   |
 | react-dom              | ^18.2.0  |
 | react-router-dom       | ^6.4.2   |
 | react-scrips           | ^5.0.1   |
@@ -108,8 +109,20 @@ npm: 8.1.2
 - npm i react-router-dom
 - npm i -D @types/react-router-dom
 
-#### design
+<br>
 
-- npm install @mui/material @emotion/react @emotion/styled  
-- npm install @mui/icons-material  
-  ※ [Material UI](https://mui.com/material-ui/getting-started/overview/) を利用している。
+#### setting UI
+
+- npm install react-bootstrap bootstrap  
+  (参照) https://react-bootstrap.github.io/getting-started/introduction/  
+  ※ index.html に CDN から css を読み込むよう設定も必要  
+  ※ React Bootstrap は Bootstrap のコンポーネントを JSX で扱えるようにしたライブラリ
+
+```
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+```
