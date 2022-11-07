@@ -126,3 +126,47 @@ npm: 8.1.2
       crossorigin="anonymous"
     />
 ```
+
+<br>
+
+#### setting dummy server
+
+* npm i -D body-parser
+* npm i -D @types/body-parser
+* npm i -D express
+* npm i -D @types/express  
+  ※ package.json に express server へのプロキシを行うことで SameOrigin 問題を回避して接続できる。  
+     (localhost:3000 -> localhost:5000 などの場合、port が異なるため Cookie を参照できないなど CORS 制約が起きて通信できないので proxy している。)  
+  ※ format はかけるが lint はかけていない (eslintrc.yaml ファイルの修正が必要になるため)  
+  ※ 以下の設定は npm run start (development env) で利用される。npm run build (prod env) では利用されない機能となる。  
+     (参照) https://create-react-app.dev/docs/proxying-api-requests-in-development/
+
+```
+  "homepage": "/",
+  "proxy": "http://localhost:5000"
+```
+
+- npm i -D ts-node
+- npm i -D nodemon  
+  ※ コード変更後、自動で再起動する。開発時に利用する。
+
+
+<br><br>
+
+## build
+
+- npm run format  
+  ※ prettier による自動フォーマッタ適用
+
+- npm run lint  
+  ※ eslint による lint 実施
+
+- npm run build  
+  ※ ビルド
+
+- npm run test  
+  ※ jest 実行  
+  ※ npm run test -- ${path} で単一試験も可能
+
+- npm run server  
+  ※ nodemon で dummy server 起動
