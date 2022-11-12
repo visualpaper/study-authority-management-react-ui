@@ -1,4 +1,4 @@
-# study-react
+# study-authority-management-react-ui
 
 ## version
 
