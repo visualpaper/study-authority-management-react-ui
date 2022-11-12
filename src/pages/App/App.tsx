@@ -1,5 +1,5 @@
 import { Container } from 'react-bootstrap'
-import { Navbars } from '../components/Navbars'
+import { Navbars } from '../../components/Navbars'
 
 export const App = ({ children }: { children: any }) => {
   return (
