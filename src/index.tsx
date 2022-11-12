@@ -7,6 +7,7 @@ import Router from './router'
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
+    {/* 最初に baseurl に history push し、homepage を "/" にしたい */}
     <BrowserRouter basename={process.env.REACT_APP_BASE_URL}>
       <App>
         <Router />
