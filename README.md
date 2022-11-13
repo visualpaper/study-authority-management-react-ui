@@ -5,15 +5,6 @@
 node: 16.13.2  
 npm: 8.1.2
 
-| dependencies           | version  |
-| ---------------------- | -------- |
-| react                  | ^18.2.0  |
-| react-bootstrap        | ^2.5.0   |
-| react-dom              | ^18.2.0  |
-| react-router-dom       | ^6.4.2   |
-| react-scrips           | ^5.0.1   |
-| typescript             | ^4.8.4   |
-
 <br><br>
 
 ## set up
