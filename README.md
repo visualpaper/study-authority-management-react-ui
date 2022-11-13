@@ -111,6 +111,14 @@ npm: 8.1.2
 
 <br>
 
+#### install api
+
+- npm i react-query
+- npm i query-string  
+  ※ query 文字列を操作するもの。
+
+<br>
+
 #### setting UI
 
 - npm install react-bootstrap bootstrap  

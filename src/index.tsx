@@ -1,17 +1,36 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { App } from './pages/App/App'
 import Router from './router'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
+
+/**
+ * retry: デフォルト 3 retry を行うか。
+ * refetchOnWindowFocus: デフォルトでユーザーがブラウザのコンポーネントにフォーカスを当てた時に自動でフェッチが動くか。
+ * suspense: Suspense 待機を行うか
+ */
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false,
+      suspense: true,
+    },
+  },
+})
+
 root.render(
   <React.StrictMode>
     {/* 最初に baseurl に history push し、homepage を "/" にしたい */}
     <BrowserRouter basename={process.env.REACT_APP_BASE_URL}>
-      <App>
-        <Router />
-      </App>
+      <QueryClientProvider client={queryClient}>
+        <App>
+          <Router />
+        </App>
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
 )
