@@ -26,6 +26,9 @@ rules:
   # 本当は消したいが、開発中あると結構キツイので off にしている。
   "@typescript-eslint/no-empty-function": off
   "@typescript-eslint/explicit-module-boundary-types": off
-  "@typescript-eslint/no-unused-vars": off
   "@typescript-eslint/ban-types": off
   "@typescript-eslint/no-non-null-assertion": off
+
+  # @typescript-eslint/no-unused-vars のほうを有効化するために 「"no-unused-vars": off」を入れている。
+  "no-unused-vars": off
+  "@typescript-eslint/no-unused-vars": off

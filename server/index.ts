@@ -57,7 +57,7 @@ app.post(BASE_URL + '/loginWithCookie', (req: any, res: any) => {
   res.setHeader('Content-Type', 'application/json')
   setTimeout(() => {
     if (!loggined) {
-      res.send()
+      res.send({})
     } else {
       res.json(login())
     }

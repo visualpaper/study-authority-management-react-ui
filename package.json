@@ -61,5 +61,5 @@
     "ts-node": "^10.9.1"
   },
   "homepage": "/authrityManagement",
-  "proxy": "http://localhost:5000"
+  "proxy": "http://localhost:5000/"
 }
