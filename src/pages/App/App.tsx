@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap'
 import { Navbars } from '../../components/Navbars'
 
-export const App = ({ children }: { children: any }) => {
+export const App: React.FC<{ children: any }> = ({ children }) => {
   return (
     <>
       <Navbars />
