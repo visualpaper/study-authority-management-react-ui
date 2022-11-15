@@ -4,15 +4,18 @@ import { useMutation } from 'react-query'
 import { loginWithCookie } from '../../apis/login'
 import { Navbars } from '../../components/Navbars'
 import { User } from '../../model/user'
-import { UserProvider } from './UserContext'
+import { UserProvider } from '../UserContext'
 
 export const App: React.FC<{ children: any }> = ({ children }) => {
   const [loginUser, setLoginUser] = useState<User | null>(null)
-  const { isLoading, isError, mutate } = useMutation<User | null>(loginWithCookie, {
-    onSuccess: (loginUser: User | null) => {
-      setLoginUser(loginUser)
+  const { isLoading, isError, mutate } = useMutation<User | null>(
+    loginWithCookie,
+    {
+      onSuccess: (loginUser: User | null) => {
+        setLoginUser(loginUser)
+      },
     }
-  })
+  )
 
   /**
    * https://reactjs.org/docs/strict-mode.html#ensuring-reusable-state いわく 2 回呼ばれるらしい。
@@ -20,7 +23,7 @@ export const App: React.FC<{ children: any }> = ({ children }) => {
    */
   useEffect(() => {
     mutate()
-  }, []);
+  }, [])
 
   if (isLoading) {
     return <Fragment />

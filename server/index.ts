@@ -53,12 +53,17 @@ app.post(BASE_URL + '/login', (req: any, res: any) => {
 })
 
 app.post(BASE_URL + '/loginWithCookie', (req: any, res: any) => {
-  res.status(200)
-  res.setHeader('Content-Type', 'application/json')
+
   setTimeout(() => {
     if (!loggined) {
-      res.send({})
+      res.status(400)
+      res.setHeader('Content-Type', 'application/json')
+      setTimeout(() => {
+        res.send({})
+      }, 1000)
     } else {
+      res.status(200)
+      res.setHeader('Content-Type', 'application/json')
       res.json(login())
     }
   }, 1000)

@@ -1,5 +1,5 @@
 import { createContext, ReactNode, FC } from 'react'
-import { User } from '../../model/user'
+import { User } from '../model/user'
 
 export const UserContext = createContext<User | null>(null)
 
