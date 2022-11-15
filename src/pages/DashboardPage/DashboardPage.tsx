@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Dashboard } from '../../components/Dashboard'
-import { UserContext } from '../App/UserContext'
+import { UserContext } from '../UserContext'
 
 export const DashboardPage: React.FC<{}> = () => {
   const user = useContext(UserContext)
