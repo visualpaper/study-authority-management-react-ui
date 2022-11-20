@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { ErrorBoundary } from 'react-error-boundary'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
 import { App } from './pages/App/App'
+import { ErrorPage } from './pages/ErrorPage/ErrorPage'
 import Router from './router'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
@@ -27,9 +29,11 @@ root.render(
     {/* 最初に baseurl に history push し、homepage を "/" にしたい */}
     <BrowserRouter basename={process.env.REACT_APP_BASE_URL}>
       <QueryClientProvider client={queryClient}>
-        <App>
-          <Router />
-        </App>
+        <ErrorBoundary FallbackComponent={ErrorPage}>
+          <App>
+            <Router />
+          </App>
+        </ErrorBoundary>
       </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>

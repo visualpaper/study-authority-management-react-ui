@@ -2,6 +2,7 @@ import { Fragment, useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { useMutation } from 'react-query'
 import { loginWithCookie } from '../../apis/login'
+import { AppError } from '../../common/error'
 import { Navbars } from '../../components/Navbars'
 import { User } from '../../model/user'
 import { UserProvider } from '../UserContext'
@@ -13,6 +14,12 @@ export const App: React.FC<{ children: any }> = ({ children }) => {
     {
       onSuccess: (loginUser: User | null) => {
         setLoginUser(loginUser)
+      },
+      onError: (error: any) => {
+        // do - nothing
+      },
+      useErrorBoundary: (error: any) => {
+        return !(error instanceof AppError)
       },
     }
   )

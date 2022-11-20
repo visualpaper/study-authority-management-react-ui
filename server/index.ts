@@ -53,7 +53,6 @@ app.post(BASE_URL + '/login', (req: any, res: any) => {
 })
 
 app.post(BASE_URL + '/loginWithCookie', (req: any, res: any) => {
-
   setTimeout(() => {
     if (!loggined) {
       res.status(400)

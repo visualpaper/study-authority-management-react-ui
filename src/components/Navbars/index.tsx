@@ -21,7 +21,13 @@ export const Navbars: React.FC<{}> = () => {
         </Navbar.Brand>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link onClick={() => {}}>Users</Nav.Link>
+            <Nav.Link
+              onClick={() => {
+                navigate('/users')
+              }}
+            >
+              Users
+            </Nav.Link>
           </Nav>
           <Nav>
             {!userContext && (
