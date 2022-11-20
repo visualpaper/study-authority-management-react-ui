@@ -2,8 +2,8 @@
 
 ## version
 
-node: 16.13.2  
-npm: 8.1.2
+node: 18.12.1  
+npm: 9.1.2
 
 <br><br>
 
@@ -61,6 +61,13 @@ npm: 8.1.2
 
 <br>
 
+#### vscode plugin
+
+- IntelliJ IDEA Keybindings  
+   ※ InteliJ と同じ keymap にしてくれる。
+
+<br>
+
 #### install formatter
 
 - npm i -D prettier  
@@ -102,7 +109,14 @@ npm: 8.1.2
 
 <br>
 
-#### install api
+#### error handling
+
+- npm i react-error-boundary  
+  ※ https://github.com/bvaughn/react-error-boundary が公式そのまま使うより使いやすいので使っている。
+
+<br>
+
+#### api
 
 - npm i react-query
 - npm i query-string  
@@ -110,7 +124,7 @@ npm: 8.1.2
 
 <br>
 
-#### setting UI
+#### ui
 
 - npm install react-bootstrap bootstrap  
   (参照) https://react-bootstrap.github.io/getting-started/introduction/  
@@ -128,7 +142,7 @@ npm: 8.1.2
 
 <br>
 
-#### setting dummy server
+#### dummy server
 
 * npm i -D body-parser
 * npm i -D @types/body-parser
@@ -168,3 +182,60 @@ npm: 8.1.2
 
 - npm run server  
   ※ nodemon で dummy server 起動
+
+<br><br><br>
+
+## パターン
+
+### error ハンドリング
+
+React でのデフォルトの挙動は以下の通り
+
+* レンダリング時にエラーが発生  
+  → 画面が全アンマウントされ (真っ白になり) 操作できなくなる  
+  例: コンパイルエラーなどの実装バグ、コンポーネント描画時にエラーが投げられた場合など
+
+* レンダリング外でエラーが発生  
+  → コンソールにエラーが表示され、操作は継続して可能  
+  例: ボタン押下後の非同期処理などでエラー、レンダリングの関係ない部分でエラーが投げられた場合など
+
+<br><br>
+
+本コンポーネントでは以下規約でエラーをハンドリングする
+
+* 想定内のエラーとして以下 Error を独自として持つ  
+  - ApiError: API 通信時のエラー  
+  - AppError: ApiError 以外で制御すべきエラー
+
+その上で以下ハンドリングを行う。
+
+<br>
+
+* レンダリング時にエラーが発生  
+  → トップ階層の Error Boundary でハンドリングし復旧不可能にする。  
+  ※ Error Boundary そのものでイベントハンドラ・非同期コードは制御されないため、それ以外を制御する。  
+  ※ 主に、コンパイルエラーなどの実装バグがメインのため、復旧不可能とする。
+
+<br>
+
+* レンダリング外でエラーが発生 (useQuery/useMutation での非同期通信時のエラー)
+  → 想定外のエラー (AppError 以外) はトップ階層の Error Boundary でハンドリングし復旧不可能にする。  
+  → 想定内のエラー (AppError) は onError でハンドリングする。
+
+<br>
+
+* レンダリング外でエラーが発生 (useQuery/useMutation 以外のエラー)
+
+検討中: ページ階層の Suspence によって Promise となったものを Error Boundary でハンドリングし復旧可能とする？
+
+<br>
+
+* 上記以外のエラー
+
+検討中: ページ階層の Suspence によって Promise となったものを Error Boundary でハンドリングし復旧可能とする？
+
+<br>
+
+※ 検討時の参考資料
+
+https://tkdodo.eu/blog/react-query-error-handling
