@@ -27,7 +27,7 @@ export const UserForm = withFormik<UserFormProps, UserFormValues>({
   mapPropsToValues: (props) => ({
     id: props.initializedId || '',
     name: '',
-    password: ''
+    password: '',
   }),
 
   validate: (values, props) => {
@@ -44,5 +44,5 @@ export const UserForm = withFormik<UserFormProps, UserFormValues>({
     setSubmitting(false)
   },
 
-  displayName: 'UserForm'
+  displayName: 'UserForm',
 })(UserFormikForm)

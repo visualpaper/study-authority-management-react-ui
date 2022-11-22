@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { DashboardPage } from './pages/DashboardPage/DashboardPage'
+import { RegistUserPage } from './pages/RegistUserPage/RegistUserPage'
 import { UsersPage } from './pages/UsersPage/UsersPage'
 
 export default function Router() {
@@ -12,6 +13,7 @@ export default function Router() {
       />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/users" element={<UsersPage />} />
+      <Route path="/users/regist" element={<RegistUserPage />} />
     </Routes>
   )
 }

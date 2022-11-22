@@ -27,7 +27,7 @@ const UserFormikForm: React.FC<FormProps> = ({
   visibleId,
   initializedId,
   visibleName,
-  visiblePassword
+  visiblePassword,
 }) => {
   const isValid = !Object.keys(errors).length
 

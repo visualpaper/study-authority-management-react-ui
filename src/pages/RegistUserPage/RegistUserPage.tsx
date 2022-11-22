@@ -1,28 +1,29 @@
 import React, { Fragment, useContext } from 'react'
 import { useMutation } from 'react-query'
+import { useNavigate } from 'react-router-dom'
 import { registUser } from '../../apis/user'
 import { AppError } from '../../common/error'
 import { UserForm } from '../../components/UserForm'
 import { UserContext } from '../UserContext'
 
-
 export const RegistUserPage: React.FC<{}> = () => {
   const user = useContext(UserContext)
-  const { isLoading, isError, mutate } = useMutation(
-    async ({
-      id,
-      name,
-      password
-    }: {
-      id: string,
-      name: string,
+  const navigate = useNavigate()
+  const { isLoading, mutate } = useMutation<
+    void,
+    unknown,
+    {
+      id: string
+      name: string
       password: string
-    }) => {
+    }
+  >(
+    async ({ id, name, password }) => {
       await registUser(id, name, password)
     },
     {
       onSuccess: () => {
-        // do - nothing
+        navigate("/")
       },
       onError: (error: any) => {
         // do - nothing
@@ -40,7 +41,7 @@ export const RegistUserPage: React.FC<{}> = () => {
     mutate({
       id: id!,
       name: name!,
-      password: password!
+      password: password!,
     })
   }
 
@@ -54,7 +55,7 @@ export const RegistUserPage: React.FC<{}> = () => {
         visibleId={true}
         visibleName={true}
         visiblePassword={true}
-        fetching={false}
+        fetching={isLoading}
         handleSubmit={handleSubmit}
       />
     </>
