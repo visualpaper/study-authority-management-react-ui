@@ -140,6 +140,10 @@ npm: 9.1.2
     />
 ```
 
+- npm i react-toastify  
+  ※ ToastContainer と `import 'react-toastify/dist/ReactToastify.css'` の追加が必要な点に注意。  
+  (参照) https://fkhadra.github.io/react-toastify/introduction
+
 <br>
 
 #### form

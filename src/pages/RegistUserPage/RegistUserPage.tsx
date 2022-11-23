@@ -1,6 +1,7 @@
 import React, { Fragment, useContext } from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { registUser } from '../../apis/user'
 import { AppError } from '../../common/error'
 import { UserForm } from '../../components/UserForm'
@@ -23,10 +24,13 @@ export const RegistUserPage: React.FC<{}> = () => {
     },
     {
       onSuccess: () => {
-        navigate("/")
+        toast.info('Success update')
+        navigate('/')
       },
       onError: (error: any) => {
-        // do - nothing
+        toast.error('error', {
+          autoClose: false
+        })
       },
       useErrorBoundary: (error: any) => {
         return !(error instanceof AppError)
