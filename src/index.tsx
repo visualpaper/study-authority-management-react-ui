@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client'
 import { ErrorBoundary } from 'react-error-boundary'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify'
 import { App } from './pages/App/App'
 import { ErrorPage } from './pages/ErrorPage/ErrorPage'
 import Router from './router'
+import 'react-toastify/dist/ReactToastify.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
@@ -32,6 +34,7 @@ root.render(
         <ErrorBoundary FallbackComponent={ErrorPage}>
           <App>
             <Router />
+            <ToastContainer position={toast.POSITION.TOP_RIGHT} theme="light" />
           </App>
         </ErrorBoundary>
       </QueryClientProvider>

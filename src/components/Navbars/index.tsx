@@ -32,7 +32,13 @@ export const Navbars: React.FC<{}> = () => {
           <Nav>
             {!userContext && (
               <>
-                <Nav.Link onClick={() => {}}>Register</Nav.Link>
+                <Nav.Link
+                  onClick={() => {
+                    navigate('/users/regist')
+                  }}
+                >
+                  Register
+                </Nav.Link>
                 <Nav.Link onClick={() => {}}>Login</Nav.Link>
               </>
             )}

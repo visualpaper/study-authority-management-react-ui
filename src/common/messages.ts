@@ -1,9 +1,7 @@
 import { STATUS_CODE } from './constants'
 
 export const COMMON_MESSAGES = {
-  CONTEXT_NOT_FOUND: 'Context not founc',
   SUCCESS_UPDATE: 'Success update',
-  CONFIRM_UPDATE: 'Confirm update',
 }
 
 export const STATUS_MESSAGES = {
