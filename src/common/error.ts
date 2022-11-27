@@ -2,11 +2,19 @@ import { STATUS_MESSAGES as MESSAGES } from './messages'
 import { STATUS_CODE } from './constants'
 import { toast } from 'react-toastify'
 
-export function isAppError(
-  error: any,
-  errorClass = AppError
-): error is AppError {
+export function isAppError(error: any, errorClass: any = AppError): boolean {
   return error instanceof errorClass
+}
+
+export function ifAppErrorWith(
+  error: any,
+  doFunc: (error: any) => any,
+  errorClass: any = AppError
+) {
+  if (error instanceof errorClass) {
+    return doFunc.call(null, error)
+  }
+  return null
 }
 
 export interface HandleOptions {

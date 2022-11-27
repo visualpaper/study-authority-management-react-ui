@@ -28,7 +28,7 @@ export const App: React.FC<{ children: any }> = ({ children }) => {
     return <Fragment />
   }
   return (
-    <UserProvider loginUser={loginUser || null}>
+    <UserProvider loginUser={loginUser || null} setLoginUser={setLoginUser}>
       <Navbars />
       <Container className="justify-content-center pt-5">
         <div>{children}</div>
