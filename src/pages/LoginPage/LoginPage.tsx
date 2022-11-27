@@ -10,7 +10,7 @@ import { User } from '../../model/user'
 import { UserContext } from '../UserContext'
 
 export const LoginPage: React.FC<{}> = () => {
-  const context = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
   const navigate = useNavigate()
   const { isLoading, mutate } = useMutation<
     User,
@@ -25,7 +25,7 @@ export const LoginPage: React.FC<{}> = () => {
     },
     {
       onSuccess: (user: User) => {
-        context.setUser(user)
+        setUser(user)
 
         toast.info(COMMON_MESSAGES.SUCCESS_UPDATE)
         navigate('/')
@@ -46,12 +46,12 @@ export const LoginPage: React.FC<{}> = () => {
   }
 
   useEffect(() => {
-    if (context.user) {
+    if (user) {
       navigate('/')
     }
   }, [])
 
-  if (context.user) {
+  if (user) {
     return <Fragment />
   }
   return (

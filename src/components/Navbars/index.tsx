@@ -6,7 +6,7 @@ import styles from './index.module.css'
 
 export const Navbars: React.FC<{}> = () => {
   const navigate = useNavigate()
-  const context = useContext(UserContext)
+  const { user } = useContext(UserContext)
 
   return (
     <Navbar bg="dark" variant="dark">
@@ -30,7 +30,7 @@ export const Navbars: React.FC<{}> = () => {
             </Nav.Link>
           </Nav>
           <Nav>
-            {!context.user && (
+            {!user && (
               <>
                 <Nav.Link
                   onClick={() => {
@@ -48,9 +48,9 @@ export const Navbars: React.FC<{}> = () => {
                 </Nav.Link>
               </>
             )}
-            {context.user && (
+            {user && (
               <>
-                <Navbar.Text>{context.user?.name} さん </Navbar.Text>
+                <Navbar.Text>{user.name} さん </Navbar.Text>
                 <Nav.Link onClick={() => {}}>Setting</Nav.Link>
               </>
             )}

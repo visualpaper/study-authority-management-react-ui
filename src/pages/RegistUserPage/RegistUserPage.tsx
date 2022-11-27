@@ -14,7 +14,7 @@ import { UserForm } from '../../components/UserForm'
 import { UserContext } from '../UserContext'
 
 export const RegistUserPage: React.FC<{}> = () => {
-  const context = useContext(UserContext)
+  const { user } = useContext(UserContext)
   const navigate = useNavigate()
   const { isLoading, mutate } = useMutation<
     void,
@@ -55,12 +55,12 @@ export const RegistUserPage: React.FC<{}> = () => {
   }
 
   useEffect(() => {
-    if (context.user) {
+    if (user) {
       navigate('/')
     }
   }, [])
 
-  if (context.user) {
+  if (user) {
     return <Fragment />
   }
   return (
