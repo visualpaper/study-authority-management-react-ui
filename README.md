@@ -97,6 +97,7 @@ npm: 9.1.2
 - npm i -D eslint-config-prettier
 - npm i -D @typescript-eslint/parser
 - npm i -D @typescript-eslint/eslint-plugin  
+- npm i -D eslint-plugin-unused-imports  
   ※ フォーマッタと lint を担当する。  
   ※ cra にデフォルトで eslint は入っているので、prettier との連携用 plugin のみをインストールする。
 
@@ -232,18 +233,6 @@ React でのデフォルトの挙動は以下の通り
 * レンダリング外でエラーが発生 (useQuery/useMutation での非同期通信時のエラー)
   → 想定外のエラー (AppError 以外) はトップ階層の Error Boundary でハンドリングし復旧不可能にする。  
   → 想定内のエラー (AppError) は onError でハンドリングする。
-
-<br>
-
-* レンダリング外でエラーが発生 (useQuery/useMutation 以外のエラー)
-
-検討中: ページ階層の Suspence によって Promise となったものを Error Boundary でハンドリングし復旧可能とする？
-
-<br>
-
-* 上記以外のエラー
-
-検討中: ページ階層の Suspence によって Promise となったものを Error Boundary でハンドリングし復旧可能とする？
 
 <br>
 

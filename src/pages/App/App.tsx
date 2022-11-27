@@ -2,27 +2,19 @@ import { Fragment, useEffect, useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { useMutation } from 'react-query'
 import { loginWithCookie } from '../../apis/login'
-import { AppError } from '../../common/error'
+import { defaultUseErrorBoundary } from '../../common/error'
 import { Navbars } from '../../components/Navbars'
 import { User } from '../../model/user'
 import { UserProvider } from '../UserContext'
 
 export const App: React.FC<{ children: any }> = ({ children }) => {
   const [loginUser, setLoginUser] = useState<User | null>(null)
-  const { isLoading, isError, mutate } = useMutation<User | null>(
-    loginWithCookie,
-    {
-      onSuccess: (loginUser: User | null) => {
-        setLoginUser(loginUser)
-      },
-      onError: (error: any) => {
-        // do - nothing
-      },
-      useErrorBoundary: (error: any) => {
-        return !(error instanceof AppError)
-      },
-    }
-  )
+  const { isLoading, mutate } = useMutation<User | null>(loginWithCookie, {
+    onSuccess: (loginUser: User | null) => {
+      setLoginUser(loginUser)
+    },
+    useErrorBoundary: defaultUseErrorBoundary,
+  })
 
   /**
    * https://reactjs.org/docs/strict-mode.html#ensuring-reusable-state いわく 2 回呼ばれるらしい。

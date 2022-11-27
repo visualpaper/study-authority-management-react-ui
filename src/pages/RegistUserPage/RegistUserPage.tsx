@@ -3,7 +3,8 @@ import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { registUser } from '../../apis/user'
-import { AppError } from '../../common/error'
+import { defaultOnError, defaultUseErrorBoundary } from '../../common/error'
+import { COMMON_MESSAGES } from '../../common/messages'
 import { UserForm } from '../../components/UserForm'
 import { UserContext } from '../UserContext'
 
@@ -24,17 +25,11 @@ export const RegistUserPage: React.FC<{}> = () => {
     },
     {
       onSuccess: () => {
-        toast.info('Success update')
+        toast.info(COMMON_MESSAGES.SUCCESS_UPDATE)
         navigate('/')
       },
-      onError: (error: any) => {
-        toast.error('error', {
-          autoClose: false
-        })
-      },
-      useErrorBoundary: (error: any) => {
-        return !(error instanceof AppError)
-      },
+      onError: defaultOnError,
+      useErrorBoundary: defaultUseErrorBoundary,
     }
   )
   const handleSubmit = (

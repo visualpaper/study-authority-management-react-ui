@@ -13,6 +13,7 @@ plugins:
   - react
   - jest
   - '@typescript-eslint'
+  - unused-imports
 # 以下を継承した上で、本 eslint の設定を利用している。
 # (参照) https://zenn.dev/kimromi/articles/b7cf98005f3193
 extends:
@@ -29,6 +30,11 @@ rules:
   "@typescript-eslint/ban-types": off
   "@typescript-eslint/no-non-null-assertion": off
 
-  # @typescript-eslint/no-unused-vars のほうを有効化するために 「"no-unused-vars": off」を入れている。
-  "no-unused-vars": off
+  # unused-imports/no-unused-imports にて自動で unused な import/vars を削除するため off にしている。
   "@typescript-eslint/no-unused-vars": off
+  "unused-imports/no-unused-imports": "error"
+  "unused-imports/no-unused-vars": [
+    "warn", {
+      "vars": "all" # global スコープを含め全ての変数をチェックする
+    }
+  ]
