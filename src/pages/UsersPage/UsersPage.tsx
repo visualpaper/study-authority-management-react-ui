@@ -20,13 +20,14 @@ export const UsersPage: React.FC<{}> = () => {
     },
     onError: defaultOnError,
     useErrorBoundary: defaultUseErrorBoundary,
+    suspense: false
   })
-  const navigateEditUser = (id: string) => {
-    navigate(`/users/${id}/edit`)
+  const navigateEditUser = (userId: string) => {
+    navigate(`/users/${userId}/edit`)
   }
 
   return (
-    <Suspense>
+    <>
       <h3>Users</h3>
       <Stack gap={2} className="col-md-8 mx-auto">
         <div className="mb-5">
@@ -38,13 +39,15 @@ export const UsersPage: React.FC<{}> = () => {
         </div>
 
         <PageLoader isPageLoading={isFetching}>
-          <UserList
-            users={data!}
-            userContext={user}
-            navigateEditUser={navigateEditUser}
-          />
+          {data && (
+            <UserList
+              users={data!}
+              userContext={user}
+              navigateEditUser={navigateEditUser}
+            />
+          )}
         </PageLoader>
       </Stack>
-    </Suspense>
+    </>
   )
 }
