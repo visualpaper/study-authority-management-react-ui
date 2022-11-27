@@ -145,12 +145,23 @@ npm: 9.1.2
   ※ ToastContainer と `import 'react-toastify/dist/ReactToastify.css'` の追加が必要な点に注意。  
   (参照) https://fkhadra.github.io/react-toastify/introduction
 
+- npm i react-icons  
+  (参照) https://react-icons.github.io/react-icons
+
 <br>
 
 #### form
 
 - npm i formik  
   (参照) https://formik.org/
+
+<br>
+
+#### util
+
+- npm i dateformat  
+- npm i -D @types/dateformat  
+  ※ 日付の表示に利用
 
 <br>
 
