@@ -35,7 +35,7 @@ rules:
   "@typescript-eslint/no-unused-vars": off
   "unused-imports/no-unused-imports": "error"
   "unused-imports/no-unused-vars": [
-    "error", {
+    "warn", {
       "vars": "all" # global スコープを含め全ての変数をチェックする
     }
   ]
