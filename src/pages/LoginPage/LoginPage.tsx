@@ -2,43 +2,35 @@ import React, { Fragment, useContext, useEffect } from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { registUser } from '../../apis/user'
-import {
-  ApiError,
-  defaultOnError,
-  defaultUseErrorBoundary,
-  isAppError,
-} from '../../common/error'
-import { COMMON_MESSAGES, USERS_MESSAGES } from '../../common/messages'
+import { login } from '../../apis/login'
+import { defaultOnError, defaultUseErrorBoundary } from '../../common/error'
+import { COMMON_MESSAGES } from '../../common/messages'
 import { UserForm } from '../../components/UserForm'
+import { User } from '../../model/user'
 import { UserContext } from '../UserContext'
 
-export const RegistUserPage: React.FC<{}> = () => {
+export const LoginPage: React.FC<{}> = () => {
   const context = useContext(UserContext)
   const navigate = useNavigate()
   const { isLoading, mutate } = useMutation<
-    void,
+    User,
     unknown,
     {
       id: string
-      name: string
       password: string
     }
   >(
-    async ({ id, name, password }) => {
-      await registUser(id, name, password)
+    async ({ id, password }) => {
+      return await login(id, password)
     },
     {
-      onSuccess: () => {
+      onSuccess: (user: User) => {
+        context.setUser(user)
+
         toast.info(COMMON_MESSAGES.SUCCESS_UPDATE)
         navigate('/')
       },
-      onError: (error: any) => {
-        if (isAppError(error, ApiError) && error.isConflict()) {
-          toast.warn(USERS_MESSAGES.CONFLICT)
-        }
-        defaultOnError(error)
-      },
+      onError: defaultOnError,
       useErrorBoundary: defaultUseErrorBoundary,
     }
   )
@@ -49,7 +41,6 @@ export const RegistUserPage: React.FC<{}> = () => {
   ) => {
     mutate({
       id: id!,
-      name: name!,
       password: password!,
     })
   }
@@ -65,10 +56,10 @@ export const RegistUserPage: React.FC<{}> = () => {
   }
   return (
     <>
-      <h3>Regist User</h3>
+      <h3>Login</h3>
       <UserForm
         visibleId={true}
-        visibleName={true}
+        visibleName={false}
         visiblePassword={true}
         fetching={isLoading}
         handleSubmit={handleSubmit}
