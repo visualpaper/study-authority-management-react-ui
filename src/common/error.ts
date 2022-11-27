@@ -1,5 +1,6 @@
 import { STATUS_MESSAGES as MESSAGES } from './messages'
 import { STATUS_CODE } from './constants'
+import { toast } from 'react-toastify'
 
 export function isAppError(
   error: any,
@@ -8,37 +9,10 @@ export function isAppError(
   return error instanceof errorClass
 }
 
-export function isApiError(
-  error: any,
-  errorClass = ApiError
-): error is ApiError {
-  return error instanceof errorClass
-}
-
-export function ifAppErrorWith(
-  error: any,
-  doFunc: (error: any) => any,
-  errorClass: any = AppError
-) {
-  if (error instanceof errorClass) {
-    return doFunc.call(null, error)
-  }
-  return null
-}
-
-export function isApiErrorWith(error: any, doFunc: (error: any) => any) {
-  return ifAppErrorWith(error, doFunc, ApiError)
-}
-
-export const getDisplayMessage = (error: AppError | Error) => {
-  return isAppError(error) ? error.getDisplayMessage() : error.message
-}
-
 export interface HandleOptions {
   displayMessage?: string | null
-  redirect?: boolean | null
 }
-const DEFAULT_OPTIONS = { redirect: false, displayMessage: null }
+const DEFAULT_OPTIONS = { displayMessage: null }
 
 export class AppError extends Error {
   public error?: Error
@@ -57,17 +31,6 @@ export class AppError extends Error {
     super(message)
     this.error = error
     this.options = options
-  }
-
-  public needRedirect(): boolean {
-    return !!this.options.redirect
-  }
-
-  public needApiRedirect(fn: Function): boolean {
-    if (this.error instanceof ApiError) {
-      return fn.call(null, this.error)
-    }
-    return false
   }
 
   public getDisplayMessage() {
@@ -144,5 +107,17 @@ export class ApiError extends AppError {
       return MESSAGES[this.status]
     }
     return MESSAGES[STATUS_CODE.SERVER_UNKNOWN] + `status:${this.status}`
+  }
+}
+
+export const defaultUseErrorBoundary = (error: any) => {
+  return !isAppError(error)
+}
+
+export const defaultOnError = (error: any) => {
+  if (isAppError(error)) {
+    toast.error(error.getDisplayMessage(), {
+      autoClose: false,
+    })
   }
 }
