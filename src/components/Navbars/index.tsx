@@ -51,7 +51,13 @@ export const Navbars: React.FC<{}> = () => {
             {user && (
               <>
                 <Navbar.Text>{user.name} さん </Navbar.Text>
-                <Nav.Link onClick={() => {}}>Setting</Nav.Link>
+                <Nav.Link
+                  onClick={() => {
+                    navigate('/setting')
+                  }}
+                >
+                  Setting
+                </Nav.Link>
               </>
             )}
           </Nav>
