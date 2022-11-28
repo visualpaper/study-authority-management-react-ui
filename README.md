@@ -284,3 +284,24 @@ https://tkdodo.eu/blog/react-query-error-handling
     ※ 前 propd と次 props の比較は `===` で行われるため、これで解決できるケースがある。
 
 (参照) https://qiita.com/hellokenta/items/6b795501a0a8921bb6b5
+
+<br><br>
+
+#### Async
+
+忘れたら読む: https://jsprimer.net/basic/async/
+
+* 非同期処理はメインスレッドで実行される  
+  ※ 同期処理によって非同期処理も遅れる。
+
+* 非同期処理は外に例外を通知する必要がある  
+  ※ ES2015 から Promise が誕生した。
+
+* Promise の特徴  
+  - Pending、Resolve、Reject の 3 つの状態がある  
+  - 生成時点では Pending となる。  
+  - Resolve、Reject 後はその Promise インスタンスは状態変化しない
+  - cache は Resolve 状態の Promise を返す
+
+* Asyn Function の誕生
+
