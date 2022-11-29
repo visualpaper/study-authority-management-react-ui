@@ -165,6 +165,23 @@ npm: 9.1.2
 
 <br>
 
+#### setting jest
+
+UT/IT を行う上で必要な jest 及び react-testing-library は CRA に入っているので以下設定だけ package.json に追加する。
+
+```
+  "jest": {
+    "testMatch": [
+      "**/*.test.{ts,tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
+    ]
+  }
+```
+
+<br>
+
 #### dummy server
 
 * npm i -D body-parser

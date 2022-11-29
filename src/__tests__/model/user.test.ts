@@ -1,11 +1,8 @@
-import { isAdmin, sameUser, User } from "../../model/user"
+import { isAdmin, sameUser, User } from '../../model/user'
 
 describe('isAdmin', () => {
   class Fixture {
-    constructor(
-      public user: User | null,
-      public expected: boolean
-    ) {
+    constructor(public user: User | null, public expected: boolean) {
       this.user = user
       this.expected = expected
     }
@@ -14,7 +11,7 @@ describe('isAdmin', () => {
   test.each([
     new Fixture(null, false),
     new Fixture({ id: '1', name: 'sample', authorityLevel: 'USER' }, false),
-    new Fixture({ id: '1', name: 'sample', authorityLevel: 'ADMIN' }, true)
+    new Fixture({ id: '1', name: 'sample', authorityLevel: 'ADMIN' }, true),
   ])('theory', (fx) => {
     expect(isAdmin(fx.user)).toBe(fx.expected)
   })
@@ -40,7 +37,11 @@ describe('sameUser', () => {
       '2',
       false
     ),
-    new Fixture({ id: '1', name: 'sample', authorityLevel: 'ADMIN' }, '1', true)
+    new Fixture(
+      { id: '1', name: 'sample', authorityLevel: 'ADMIN' },
+      '1',
+      true
+    ),
   ])('theory', (fx) => {
     expect(sameUser(fx.user, fx.id)).toBe(fx.expected)
   })
