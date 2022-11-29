@@ -67,6 +67,14 @@
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1"
   },
+  "jest": {
+    "testMatch": [
+      "**/*.test.{ts,tsx}"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
+    ]
+  },
   "homepage": "/authrityManagement",
   "proxy": "http://localhost:5000/"
 }
