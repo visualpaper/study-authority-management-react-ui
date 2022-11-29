@@ -12,7 +12,7 @@ import { UserContext } from '../UserContext'
 
 export const EditUserPage: React.FC<{}> = () => {
   const { user } = useContext(UserContext)
-  let { userId } = useParams();
+  const { userId } = useParams()
   const navigate = useNavigate()
   const { data, isFetching } = useQuery<User | null>(
     'editUser',
@@ -22,7 +22,7 @@ export const EditUserPage: React.FC<{}> = () => {
     {
       onError: defaultOnError,
       useErrorBoundary: defaultUseErrorBoundary,
-      suspense: false
+      suspense: false,
     }
   )
   const { isLoading, mutate } = useMutation<

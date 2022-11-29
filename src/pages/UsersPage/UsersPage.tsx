@@ -1,4 +1,4 @@
-import React, { Suspense, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Stack } from 'react-bootstrap'
 import { useQuery } from 'react-query'
 import { useNavigate } from 'react-router-dom'
@@ -20,7 +20,7 @@ export const UsersPage: React.FC<{}> = () => {
     },
     onError: defaultOnError,
     useErrorBoundary: defaultUseErrorBoundary,
-    suspense: false
+    suspense: false,
   })
   const navigateEditUser = (userId: string) => {
     navigate(`/users/${userId}/edit`)
