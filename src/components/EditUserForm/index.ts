@@ -22,8 +22,6 @@ export const EditUserForm = withFormik<EditUserFormProps, EditUserFormValues>({
     authorityLevel: props.user.authorityLevel,
   }),
 
-  validate: (values, props) => {},
-
   handleSubmit: (values, { props, setSubmitting }) => {
     props.handleSubmit(values.id, values.authorityLevel)
     setSubmitting(false)

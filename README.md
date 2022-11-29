@@ -300,8 +300,19 @@ https://tkdodo.eu/blog/react-query-error-handling
 * Promise の特徴  
   - Pending、Resolve、Reject の 3 つの状態がある  
   - 生成時点では Pending となる。  
-  - Resolve、Reject 後はその Promise インスタンスは状態変化しない
+  - Resolve、Reject 後はその Promise インスタンスは状態変化しない  
   - cache は Resolve 状態の Promise を返す
 
-* Asyn Function の誕生
-
+* Asyn Function の誕生  
+  - Async 関数は以下の点が通常の関数とは異なる  
+  - Async 関数は Promise インスタンスを返す  
+    ※ return まで到達すると Promise.resolve(値) が返却される。  
+    ※ 例外が発生する/させると Primise.reject が返却される。  
+  - Async 関数は await を使える
+    ※ await は右辺の Promise インスタンスが Fulfilled/Rejectd になるまでその場で非同期処理の完了を待つ。  
+    ※ await は右辺の Promise インスタンスの評価結果を値として返す。  
+    ※ await の右辺の Promise インスタンスが Reject になった場合はその場でエラーを throw する。  
+    ※ Promise インスタンスの状態が変化した後次の行の処理を再開する。  
+    ※ Async Funciton 内で発生した例外は自動でキャッチされ、Async Function からは Reject な Promise を返される。  
+    ※ Async Funciton 内で発生した例外を自分で try cache し rethrow しない場合、Async Function からは Resolve な Promise を返される。  
+    ※ Async Function の呼び出し元は Async Function の完了を待たずに処理を継続できる。
