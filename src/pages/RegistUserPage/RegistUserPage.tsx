@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { useMutation } from 'react-query'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -54,11 +54,14 @@ export const RegistUserPage: React.FC<{}> = () => {
     })
   }
 
+  /*
+   * test にて MemoryRouter で loginWithCookie 前に来てしまう都合ここにおけない
   useEffect(() => {
     if (user) {
       navigate('/')
     }
   }, [])
+  */
 
   if (user) {
     return <Fragment />
