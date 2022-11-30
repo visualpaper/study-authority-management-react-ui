@@ -225,7 +225,7 @@ UT/IT を行う上で必要な jest 及び react-testing-library は CRA に入�
 
 <br><br><br>
 
-## パターン
+## 指針
 
 ### error ハンドリング
 
@@ -267,6 +267,29 @@ React でのデフォルトの挙動は以下の通り
 ※ 検討時の参考資料
 
 https://tkdodo.eu/blog/react-query-error-handling
+
+<br><br>
+
+### テスト
+
+https://testingjavascript.com/
+
+```
+* E2E
+  - playwright を用いて実施する
+
+* Integration Test
+* Unit Test
+  - jest 及び react-testing-library を用いて実施する
+  - model など Component にかかわらないもの
+  - View Component
+
+* Static
+  - lint や TypeScript
+
+※ 大前提としてやりすぎない。
+※ 「コードカバレッジ」より「ユースケースカバレッジ」を意識し、ユーザから見てどうかという観点で試験を行う。
+```
 
 <br><br><br>
 
