@@ -23,7 +23,8 @@ jobs:
           npm run build
           npm run test
         env:
-          # worning レベルの場合はエラーにしない。
+          # false の場合、worning レベルの場合はエラーにしない。
+          # ※ false だったとしても、test でのエラーは Actions は失敗する。
           CI: false
 
   # for aws

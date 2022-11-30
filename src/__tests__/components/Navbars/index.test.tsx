@@ -36,7 +36,7 @@ describe('Navbars', () => {
     )
 
     // Register が表示されていないこと
-    expect(screen.queryByText('Register')).toBeInTheDocument()
+    expect(screen.queryByText('Register')).not.toBeInTheDocument()
 
     // Login が表示されていないこと
     expect(screen.queryByText('Login')).not.toBeInTheDocument()
