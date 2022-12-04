@@ -167,7 +167,10 @@ npm: 9.1.2
 
 #### setting jest
 
-UT/IT を行う上で必要な jest 及び react-testing-library は CRA に入っているので以下設定だけ package.json に追加する。
+* npm i -D msw  
+  ※ mock server 用
+
+他、UT/IT を行う上で必要な jest 及び react-testing-library は CRA に入っているので以下設定だけ package.json に追加する。
 
 ```
   "jest": {
