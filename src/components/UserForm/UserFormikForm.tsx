@@ -85,6 +85,7 @@ const UserFormikForm: React.FC<FormProps> = ({
         </Form.Group>
       )}
       <Button
+        data-testid="user-form-button"
         variant="primary"
         type="submit"
         className={styles.submit_button}
