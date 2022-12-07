@@ -54,73 +54,73 @@ test('初期表示', async () => {
   expect(screen.getByText(/Submit/)).toBeEnabled()
 })
 
-// test('入力欄が空で Submit ボタンを押下する', async () => {
-//   /*
-//    * When
-//    */
-//   render('/setting')
+test('入力欄が空で Submit ボタンを押下する', async () => {
+  /*
+   * When
+   */
+  render('/setting')
 
-//   /*
-//    * Then
-//    */
+  /*
+   * Then
+   */
 
-//   // Submit ボタンが表示されるまで待機する
-//   await waitFor(() => expect(screen.queryByText(/Submit/)).toBeInTheDocument())
+  // Submit ボタンが表示されるまで待機する
+  await waitFor(() => expect(screen.queryByText(/Submit/)).toBeInTheDocument())
 
-//   // Submit ボタンが押下可能であること
-//   expect(screen.getByText(/Submit/)).toBeEnabled()
+  // Submit ボタンが押下可能であること
+  expect(screen.getByText(/Submit/)).toBeEnabled()
 
-//   // Submit ボタンを押下する
-//   await act(() => {
-//     fireEvent.click(screen.getByText(/Submit/))
-//   })
+  // Submit ボタンを押下する
+  await act(() => {
+    fireEvent.click(screen.getByText(/Submit/))
+  })
 
-//   // Submit ボタンが非活性になること
-//   await waitFor(() => expect(screen.getByText(/Submit/)).toBeDisabled())
+  // Submit ボタンが非活性になること
+  await waitFor(() => expect(screen.getByText(/Submit/)).toBeDisabled())
 
-//   // Name 入力欄エラーが表示されること
-//   expect(screen.queryByText(/Name is Required/)).toBeInTheDocument()
-// })
+  // Name 入力欄エラーが表示されること
+  expect(screen.queryByText(/Name is Required/)).toBeInTheDocument()
+})
 
-// test('Submit ボタンを押下し正常に処理できないこと', async () => {
-//   /*
-//    * Given
-//    */
-//   response.mockImplementation((req, res, ctx) => {
-//     return res(ctx.status(500))
-//   })
+test('Submit ボタンを押下し正常に処理できないこと', async () => {
+  /*
+   * Given
+   */
+  response.mockImplementation((req, res, ctx) => {
+    return res(ctx.status(500))
+  })
 
-//   /*
-//    * When
-//    */
-//   render('/setting')
+  /*
+   * When
+   */
+  render('/setting')
 
-//   /*
-//    * Then
-//    */
+  /*
+   * Then
+   */
 
-//   // Submit ボタンが表示されるまで待機する
-//   await waitFor(() => expect(screen.queryByText(/Submit/)).toBeInTheDocument())
+  // Submit ボタンが表示されるまで待機する
+  await waitFor(() => expect(screen.queryByText(/Submit/)).toBeInTheDocument())
 
-//   // Id 欄に入力する
-//   const nameInput = await screen.findByPlaceholderText('User Name')
-//   await act(() => {
-//     userEvent.type(nameInput, 'Sample Name')
-//   })
-//   await waitFor(() => expect(nameInput).toHaveValue('Sample Name'))
+  // Id 欄に入力する
+  const nameInput = await screen.findByPlaceholderText('User Name')
+  await act(() => {
+    userEvent.type(nameInput, 'Sample Name')
+  })
+  await waitFor(() => expect(nameInput).toHaveValue('Sample Name'))
 
-//   // Submit ボタンを押下する
-//   await act(() => {
-//     fireEvent.click(screen.getByText(/Submit/))
-//   })
+  // Submit ボタンを押下する
+  await act(() => {
+    fireEvent.click(screen.getByText(/Submit/))
+  })
 
-//   // Dashboard に遷移できないこと
-//   await waitFor(() =>
-//     expect(
-//       screen.queryByText(/Authrity Management Dashboard/)
-//     ).not.toBeInTheDocument()
-//   )
-// })
+  // Dashboard に遷移できないこと
+  await waitFor(() =>
+    expect(
+      screen.queryByText(/Authrity Management Dashboard/)
+    ).not.toBeInTheDocument()
+  )
+})
 
 test('Submit ボタンを押下し正常に処理できること', async () => {
   /*
