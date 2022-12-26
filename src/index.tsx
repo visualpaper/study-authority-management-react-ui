@@ -28,7 +28,6 @@ const queryClient = new QueryClient({
 
 root.render(
   <React.StrictMode>
-    {/* 最初に baseurl に history push し、homepage を "/" にしたい */}
     <BrowserRouter basename={process.env.REACT_APP_BASE_URL}>
       <QueryClientProvider client={queryClient}>
         <ErrorBoundary FallbackComponent={ErrorPage}>
