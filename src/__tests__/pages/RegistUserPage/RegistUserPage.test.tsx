@@ -1,9 +1,8 @@
 import '@testing-library/jest-dom'
 import '@testing-library/user-event'
-import userEvent from '@testing-library/user-event'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
-import { act, fireEvent, render, screen, waitFor } from '../../test-utils'
+import { render, screen, waitFor } from '../../test-utils'
 
 // もし delay 等かける場合、デフォルト 5s なので長めにテスト時間を取る必要がある
 // jest.setTimeout(10000)

@@ -76,6 +76,6 @@
       "node_modules/(?!@ngrx|(?!deck.gl)|ng-dynamic)"
     ]
   },
-  "homepage": "/authrityManagement",
+  "homepage": "/",
   "proxy": "http://localhost:5000/"
 }
