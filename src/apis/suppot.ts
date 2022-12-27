@@ -40,6 +40,7 @@ export async function doRequest(
   const request = new Request(buildUrl(url, query), {
     method,
     headers: buildHeaders(headers),
+    mode: 'cors',
     credentials: 'include',
     body: params ? JSON.stringify(params) : undefined,
   })
