@@ -14,13 +14,7 @@ Amplify.configure({
   Auth: {
     region: 'ap-northeast-1',
     userPoolId: 'ap-northeast-1_Q4kBz9qhX',
-    userPoolWebClientId: '5cb0o4qho18ggiojqb86rcohrt',
-    oauth: {
-      domain: "https://umejima-sample.auth.ap-northeast-1.amazoncognito.com",
-      scope: ['openid', 'aws.cognito.signin.user.admin', 'umejima-sample-server-id/authorityLevel'],
-      redirectSignIn: "http://localhost:3000",
-      responseType: 'code',
-    },
+    userPoolWebClientId: '5cb0o4qho18ggiojqb86rcohrt'
   }
 })
 
