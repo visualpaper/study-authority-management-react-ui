@@ -157,6 +157,15 @@ npm: 9.1.2
 
 <br>
 
+#### Auth
+
+- npm i aws-amplify  
+- npm i @aws-amplify/ui-react  
+  ※ Amplify のライブラリを利用し Cognite 関連の UI を構築している。  
+  ※ Cognite を使うだけなら Amplify は必須でないのだが、ライブラリが便利なので使っている。
+
+<br>
+
 #### util
 
 - npm i dateformat  

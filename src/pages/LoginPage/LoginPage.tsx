@@ -8,48 +8,36 @@ import { COMMON_MESSAGES } from '../../common/messages'
 import { UserForm } from '../../components/UserForm'
 import { User } from '../../model/user'
 import { UserContext } from '../UserContext'
+import { Auth, Hub } from 'aws-amplify';
+import { Authenticator } from '@aws-amplify/ui-react'
+import '@aws-amplify/ui-react/styles.css';
 
 export const LoginPage: React.FC<{}> = () => {
   const { user, setUser } = useContext(UserContext)
   const navigate = useNavigate()
-  const { isLoading, mutate } = useMutation<
-    User,
-    unknown,
-    {
-      id: string
-      password: string
-    }
-  >(
-    async ({ id, password }) => {
-      return await login(id, password)
-    },
-    {
-      onSuccess: (user: User) => {
-        setUser(user)
 
-        toast.info(COMMON_MESSAGES.SUCCESS_UPDATE)
-        navigate('/')
-      },
-      onError: defaultOnError,
-      useErrorBoundary: defaultUseErrorBoundary,
-    }
-  )
-  const handleSubmit = (
-    id: string | null,
-    name: string | null,
-    password: string | null
-  ) => {
-    mutate({
-      id: id!,
-      password: password!,
-    })
-  }
+  Auth.currentAuthenticatedUser()
+  .then(user => {
+    console.log(user)
+  })
 
   useEffect(() => {
     if (user) {
       navigate('/')
     }
+
+    Hub.listen('auth', ({ payload: { event, data } }) => {
+      switch (event) {
+        case 'signIn':
+          setUser(data)
+
+          toast.info(COMMON_MESSAGES.SUCCESS_UPDATE)
+          navigate('/')
+          break;
+      }
+    });
   }, [])
+
 
   if (user) {
     return <Fragment />
@@ -57,13 +45,9 @@ export const LoginPage: React.FC<{}> = () => {
   return (
     <>
       <h3>Login</h3>
-      <UserForm
-        visibleId={true}
-        visibleName={false}
-        visiblePassword={true}
-        fetching={isLoading}
-        handleSubmit={handleSubmit}
-      />
+      <Authenticator>
+
+      </Authenticator>
     </>
   )
 }
